@@ -1,4 +1,5 @@
 let jwt = require('jsonwebtoken');
+let config = require('../../../config/config')
 
 module.exports = {
     checkToken (req, res, next) {
@@ -13,7 +14,7 @@ module.exports = {
         // 解析token
         if (token) {
             // 确认token
-            jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+            jwt.verify(token, config.secret, function (err, decoded) {
                 if (err) {
                     return res.json({ success: false, message: 'token信息错误.' });
                 } else {

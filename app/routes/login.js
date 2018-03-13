@@ -4,7 +4,9 @@ let checkToken = require('../controller/middleware/checkToken');
 
 const router = express.Router();
 
-// router.use(checkToken);
 router.post('/login', login.login);
+
+router.use(checkToken.checkToken);
+router.post('/isLogin', login.isLogin);
 
 module.exports = router;

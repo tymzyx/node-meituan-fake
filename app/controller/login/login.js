@@ -1,5 +1,6 @@
 let User = require('../../models/user');
 let jwt = require('jsonwebtoken');
+let config = require('../../../config/config')
 
 module.exports = {
     login(req, res) {
@@ -17,8 +18,12 @@ module.exports = {
                     res.json({ success: false, message: '认证失败，密码错误' });
                 } else {
                     // 创建token
-                    let token = jwt.sign(user, app.get('superSecret'), {
-                        expiresInMinutes: 1440 // 设置过期时间 expiresIn
+                    let token = jwt.sign({
+                        username: user.name,
+                        password: user.password,
+                        admin: user.admin
+                    }, config.secret, {
+                        expiresIn: 3600 // 设置过期时间 expiresIn
                     });
                     res.json({
                         success: true,
@@ -28,5 +33,9 @@ module.exports = {
                 }
             }
         })
+    },
+    isLogin(req, res) {
+        req.decoded.success = true;
+        res.json(req.decoded);
     }
 };
