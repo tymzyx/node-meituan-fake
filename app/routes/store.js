@@ -3,6 +3,6 @@ let store = require('../controller/store/store');
 
 const router = express.Router();
 
-router.get('/store/findNearby', store.findNearby);
+router.get('/findNearby', store.findNearby);
 
 module.exports = router;

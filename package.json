@@ -23,5 +23,15 @@
   "bugs": {
     "url": "https://github.com/tymzyx/node-meituan-fake/issues"
   },
-  "homepage": "https://github.com/tymzyx/node-meituan-fake#readme"
+  "homepage": "https://github.com/tymzyx/node-meituan-fake#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "node-fetch": "^2.1.1"
+  }
 }
