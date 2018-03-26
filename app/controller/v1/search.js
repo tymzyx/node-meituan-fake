@@ -1,4 +1,4 @@
-'use stric'
+'use strict'
 
 import AddressComponent from '../common/addressComponent'
 
@@ -10,8 +10,10 @@ class SearchPlace extends AddressComponent {
 
     async search(req, res) {
         let {type = 'search', cityName, keyword} = req.query;
+        // console.log('req-query: ', req.query);
         if (!keyword || !cityName) {
             res.send({
+                code: '0',
                 name: 'ERROR_QUERY_TYPE',
 				message: '参数错误',
             });
@@ -32,6 +34,7 @@ class SearchPlace extends AddressComponent {
             res.send(placeList);
         } catch (err) {
             res.send({
+                code: '0',
                 name: 'GET_ADDRESS_ERROR',
                 message: '获取地址信息失败'
             });
