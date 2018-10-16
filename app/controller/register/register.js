@@ -4,7 +4,7 @@ let User = require('../../models/user');
 
 let register = function (req, res) {
     let {username, password, email, mobile} = req.body;
-    User.find({}, {name: 1}, function (err, names) {
+    User.find({}, {name: 1}, function (err, infos) {
         if (err) {
             console.log('error', err);
             res.json({
@@ -13,7 +13,11 @@ let register = function (req, res) {
             });
             throw err;
         }
-        if (names.indexOf(username)) {
+        let names = [];
+        infos.forEach(item => {
+            names.push(item.name);
+        });
+        if (names.indexOf(username) !== -1) {
             res.json({
                 status: 0,
                 message: '注册失败，用户名已存在'
